@@ -5,3 +5,4 @@
 wasm-pack.log
 .DS_Store
 fuzz/*/out
+.idea

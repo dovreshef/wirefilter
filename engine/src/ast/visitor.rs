@@ -164,14 +164,14 @@ impl<'s> UsesVisitor<'s> {
 
 impl<'s> Visitor<'s> for UsesVisitor<'s> {
     fn visit_expr(&mut self, node: &impl Expr<'s>) {
-        // Stop visiting the AST once we have found one occurence of the field
+        // Stop visiting the AST once we have found one occurrence of the field
         if !self.uses {
             node.walk(self)
         }
     }
 
     fn visit_value_expr(&mut self, node: &impl ValueExpr<'s>) {
-        // Stop visiting the AST once we have found one occurence of the field
+        // Stop visiting the AST once we have found one occurrence of the field
         if !self.uses {
             node.walk(self)
         }
@@ -202,14 +202,7 @@ impl<'s> UsesListVisitor<'s> {
 
 impl<'s> Visitor<'s> for UsesListVisitor<'s> {
     fn visit_expr(&mut self, node: &impl Expr<'s>) {
-        // Stop visiting the AST once we have found one occurence of the field
-        if !self.uses {
-            node.walk(self)
-        }
-    }
-
-    fn visit_value_expr(&mut self, node: &impl ValueExpr<'s>) {
-        // Stop visiting the AST once we have found one occurence of the field
+        // Stop visiting the AST once we have found one occurrence of the field
         if !self.uses {
             node.walk(self)
         }
@@ -225,6 +218,13 @@ impl<'s> Visitor<'s> for UsesListVisitor<'s> {
         }
         if !self.uses {
             comparison_expr.walk(self)
+        }
+    }
+
+    fn visit_value_expr(&mut self, node: &impl ValueExpr<'s>) {
+        // Stop visiting the AST once we have found one occurrence of the field
+        if !self.uses {
+            node.walk(self)
         }
     }
 }
