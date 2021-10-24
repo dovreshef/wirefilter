@@ -681,7 +681,7 @@ macro_rules! Scheme {
             .iter()
             .map(|&(k, ref v)| (k.to_owned(), v.clone())),
         )
-        // Treat duplciations in static schemes as a developer's mistake.
+        // Treat duplications in static schemes as a developer's mistake.
         .unwrap_or_else(|err| panic!("{}", err))
     };
     ($ty:ident $(($subty:tt $($rest:tt)*))?) => {crate::Type::$ty$((Box::new(Scheme!($subty $($rest)*))))?};

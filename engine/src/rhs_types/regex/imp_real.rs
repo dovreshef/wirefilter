@@ -12,6 +12,7 @@ impl FromStr for Regex {
     fn from_str(s: &str) -> Result<Self, Error> {
         ::regex::bytes::RegexBuilder::new(s)
             .unicode(false)
+            .dot_matches_new_line(true)
             .build()
             .map(Regex)
     }
